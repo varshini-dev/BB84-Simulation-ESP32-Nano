@@ -1,41 +1,33 @@
 import numpy as np
 
-N = 200  # number of qubits
+N = 400
 
-# Step 1: Alice generates random bits and bases
 alice_bits = np.random.randint(0, 2, N)
 alice_bases = np.random.randint(0, 2, N)
-
-# Step 2: Bob randomly chooses bases
 bob_bases = np.random.randint(0, 2, N)
 
-# Step 3: Measurement
-bob_results = []
-
-for i in range(N):
-    if alice_bases[i] == bob_bases[i]:
-        bob_results.append(alice_bits[i])
-    else:
-        bob_results.append(np.random.randint(0, 2))
-
-# Step 4: Key sifting
 final_key = []
+
 for i in range(N):
     if alice_bases[i] == bob_bases[i]:
         final_key.append(alice_bits[i])
 
-# Convert to string
-final_key_str = ''.join(map(str, final_key))
+if len(final_key) < 128:
+    print("Not enough key bits generated. Increase N.")
+else:
+    key_str = ''.join(map(str, final_key[:128]))
 
-# Calculate QBER
-errors = sum([1 for i in range(len(final_key))
-              if final_key[i] != bob_results[i]])
-qber = errors / len(final_key)
+    print("128-bit Key:")
+    print(key_str)
 
-print("Generated Key:", final_key_str[:128])
-print("QBER:", qber)
+    hex_key = []
+    for i in range(0, 128, 8):
+        byte = key_str[i:i+8]
+        hex_key.append("0x{:02X}".format(int(byte,2)))
 
+    print("\nAES Format:")
+    print(", ".join(hex_key))
 
 #Sample output
-#Generated Key: 011111000010111110000011111001100011101000010101111101100111000100011011010011110100000
-#QBER: 0.5057471264367817
+#128-bit Key: 00000101101010100101101101110010010000011101111011001100100111110010110000010011110100001011011010010100100001110101001111101001
+#AES Format: 0x05, 0xAA, 0x5B, 0x72, 0x41, 0xDE, 0xCC, 0x9F, 0x2C, 0x13, 0xD0, 0xB6, 0x94, 0x87, 0x53, 0xE9
