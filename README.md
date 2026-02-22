@@ -23,8 +23,6 @@ Security Verification
         ↓
 Status Display (Nano + I2C LCD)
 
----
-
 ## Features
 
 - AES-128 CBC encryption
@@ -34,8 +32,6 @@ Status Display (Nano + I2C LCD)
 - Hardware-based monitoring
 - I2C LCD status display
 - Serial debugging support
-
----
 
 ## Hardware Used
 
@@ -55,8 +51,6 @@ Status Display (Nano + I2C LCD)
 6. If mismatch → ALERT.
 7. If match → SECURE.
 8. Arduino Nano displays system status.
-
----
 
 ## Attack Simulation
 
