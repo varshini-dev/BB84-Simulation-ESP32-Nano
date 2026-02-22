@@ -63,8 +63,3 @@ Simulates data tampering by flipping a cipher byte.
 Output:
 - Secure Mode → LCD shows SECURE
 - Attack Mode → LCD shows ALERT
-
-## Author
-
-Electronics Engineering Student  
-Project: Quantum and Ultra-Secure Communication
