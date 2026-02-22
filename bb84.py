@@ -34,3 +34,8 @@ qber = errors / len(final_key)
 
 print("Generated Key:", final_key_str[:128])
 print("QBER:", qber)
+
+
+#Sample output
+#Generated Key: 011111000010111110000011111001100011101000010101111101100111000100011011010011110100000
+#QBER: 0.5057471264367817
